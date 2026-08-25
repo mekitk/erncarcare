@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import {
-  Camera,
   Car,
   CheckCircle2,
   Clock,
@@ -137,31 +136,6 @@ const infoPanels: Record<InfoKey, InfoPanel> = {
   },
 }
 
-const exteriorProcess = [
-  '1. Kat Koch Chemie H9 Kalın Pasta',
-  '2. Kat Koch Chemie F6 İnce Pasta',
-  '3. Kat Koch Chemie M3 Hare ve Hologram',
-  '4. Kat Tonyin Seramik Wax',
-  'Jant Temizliği',
-  'Motor Temizliği',
-  'Motor Koruma',
-  'Reçine Temizliği',
-  'Demir Tozu Temizliği',
-  'Kil Uygulaması',
-  'Komple Rütüş İşlemi',
-]
-
-const interiorProcess = [
-  'Koltuk Temizliği',
-  'Tavan Temizliği',
-  'Torpido Temizliği',
-  'Klima Yolu Petek Temizliği',
-  'Stepne Temizliği',
-  'Halı Paspas Temizliği',
-  'Kapı Döşeme Temizliği',
-  'Ahtapot ile Kurutma İşlemi',
-]
-
 const hours = [
   'Pazartesi: 09:00 - 22:00',
   'Salı: 09:00 - 22:00',
@@ -203,9 +177,17 @@ export default function Page() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="live-badge"><span /> PPF KAPLAMA</p>
-          <p className="eyebrow">SCHUTZ PPF · 5 / 7 / 10 Yıl Garantili</p>
-          <h1 className="hero-sign-title">Aracınıza dair<br /><em>her şey.</em></h1>
+          <div className="hero-social-strip" aria-label="Sosyal medya ve iletişim">
+            <a className="hero-social-button hero-social-instagram" href="https://www.instagram.com/erncarcare/" target="_blank" rel="noreferrer">
+              <span className="hero-social-icon"><img src="/instagram-icon.png" alt="" /></span>
+              <span className="hero-social-copy">
+                <strong>ERN <em>CAR CARE</em></strong>
+                <small>@erncarcare</small>
+              </span>
+            </a>
+          </div>
+          <p className="hero-follow-text">Kampanyalardan yararlanmak için bizi sosyal medyada takipte kalın.</p>
+          <h1 className="hero-sign-title">Aracınıza dair<br /><em>her şey</em></h1>
           <p className="hero-text">PPF kaplama başta olmak üzere cam filmi, pasta cila ve detaylı bakım çözümleriyle aracınızı koruyor; 6 yıllık tecrübemizi kusursuz işçilikle yansıtıyoruz.</p>
           <div className="hero-actions">
             <a className="button button-dark" href={whatsappHref} target="_blank" rel="noreferrer">WhatsApp <MessageCircle size={17} /></a>
@@ -220,13 +202,13 @@ export default function Page() {
         </div>
         <div className="hero-bottom">
           <span>İstanbul · Kağıthane</span>
-          <span>SCHUTZ PPF · ORACAL CAM FİLMİ · DETAY</span>
+          <span>Kampanyalar · Instagram · WhatsApp İletişim</span>
           <span className="scroll-hint">Aşağı kaydır <b>↓</b></span>
         </div>
       </section>
 
       <section className="protection section-pad" id="koruma">
-        <div className="section-kicker">01 / SCHUTZ 🇩🇪 PPF</div>
+        <div className="section-kicker">SCHUTZ 🇩🇪 PPF</div>
         <div className="intro-grid">
           <h2>Aracınıza özel<br /><em>koruma seçenekleri.</em></h2>
           <div>
@@ -238,15 +220,32 @@ export default function Page() {
           </div>
         </div>
         <div className="ppf-grid">
-          {ppfOptions.map((option) => (
-            <article className="ppf-card" key={option.code}>
-              <span>{option.number}</span>
-              <h3>{option.series}</h3>
-              <p className="ppf-code">{option.code}</p>
-              <p className="ppf-warranty"><CheckCircle2 size={16} /> {option.warranty}</p>
-              <p>{option.description}</p>
-            </article>
-          ))}
+          {ppfOptions.map((option) => {
+            const warrantyYears = option.warranty.split(' ')[0]
+
+            return (
+              <article className="ppf-card" data-code={option.code} key={option.code}>
+                <div className="ppf-card-head">
+                  <span className="ppf-index">{option.number}</span>
+                  <span className="ppf-label">SCHUTZ PPF</span>
+                </div>
+                <div className="ppf-card-main">
+                  <p className="ppf-code">{option.code}</p>
+                  <h3>{option.series}</h3>
+                </div>
+                <div className="ppf-warranty">
+                  <CheckCircle2 size={18} />
+                  <strong>{warrantyYears}</strong>
+                  <span>Yıl Garanti</span>
+                </div>
+                <p className="ppf-description">{option.description}</p>
+                <div className="ppf-card-foot">
+                  <span>Yüksek parlaklık</span>
+                  <span>Premium koruma</span>
+                </div>
+              </article>
+            )
+          })}
         </div>
       </section>
 
@@ -271,8 +270,8 @@ export default function Page() {
             </button>
           </div>
           <div className="feature-copy">
-            <div className="section-kicker">02 / ÜCRETSİZ VALE</div>
-            <h2>Siz zahmet<br /><em>etmeyin.</em></h2>
+            <div className="section-kicker">ÜCRETSİZ VALE</div>
+            <h2>Siz zahmet<br /><em>etmeyin</em></h2>
             <p className="lead">İstanbul Avrupa Yakası'na özel ücretsiz vale hizmetimizle aracınızı adresinizden teslim alıyoruz.</p>
             <p>İşlemler tamamlandığında aracınızı güvenle tekrar adresinize teslim ediyoruz. Aracınız tüm süreç boyunca ERN CAR CARE güvencesinde.</p>
             <a className="button button-dark" href="tel:+905529199674"><Phone size={17} /> Vale için ara</a>
@@ -283,10 +282,10 @@ export default function Page() {
       <section className="reviews section-pad" id="yorumlar">
         <div className="section-head">
           <div>
-            <div className="section-kicker">03 / GOOGLE YORUMLARI</div>
-            <h2>Müşterilerimizin<br /><em>güveniyle.</em></h2>
+            <div className="section-kicker">GOOGLE YORUMLARI</div>
+            <h2>Siz hâlâ<br /><em>yorumlarımıza bakmadınız mı?</em></h2>
           </div>
-          <p>Google yorumlarında 5,0 puan ve 94 yorumla öne çıkan işçilik, ilgi ve teslim süreci.</p>
+          <p>Gerçek müşteri deneyimleri, aracınızı teslim etmeden önce size en net güveni verir.</p>
         </div>
         <div className="reviews-layout">
           <div className="rating-card">
@@ -298,7 +297,7 @@ export default function Page() {
               <Star fill="currentColor" size={18} />
               <Star fill="currentColor" size={18} />
             </div>
-            <p>94 Google yorumu</p>
+            <p>128 Google yorumu</p>
           </div>
           <div className="review-grid">
             {reviews.map((review) => (
@@ -324,7 +323,7 @@ export default function Page() {
       <section className="services section-pad" id="hizmetler">
         <div className="section-head">
           <div>
-            <div className="section-kicker">04 / KATALOG</div>
+            <div className="section-kicker">KATALOG</div>
             <h2>Sizlere nasıl<br /><em>hizmet verebiliriz?</em></h2>
           </div>
           <p>Aracınıza değer katacak bakım, koruma ve detay çözümleri tek adreste.</p>
@@ -366,8 +365,10 @@ export default function Page() {
       <section className="contact section-pad" id="iletisim">
         <div className="contact-overview">
           <div>
-            <div className="section-kicker">05 / ADRES</div>
-            <h2>ERN Car Care<br /><em>Kağıthane.</em></h2>
+            <div className="section-kicker">ADRES</div>
+            <h2 className="contact-brand-title">
+              <span>ERN <strong>CAR CARE</strong></span><br /><em>Kağıthane.</em>
+            </h2>
             <p>Aracınıza değer katacak tüm bakım ve koruma hizmetleri ERN Car Care'de.</p>
           </div>
           <div className="address-block">
@@ -392,7 +393,10 @@ export default function Page() {
         </div>
         <div className="contact-actions">
           <a className="button button-light" href="tel:+905529199674"><Phone size={17} /> 0552 919 9674</a>
-          <a className="button button-outline" href="https://www.instagram.com/erncarcare/" target="_blank" rel="noreferrer"><Camera size={17} /> @erncarcare</a>
+          <a className="button button-outline contact-instagram-button" href="https://www.instagram.com/erncarcare/" target="_blank" rel="noreferrer">
+            <img src="/instagram-icon.png" alt="" />
+            <span>ERN <strong>CAR CARE</strong></span>
+          </a>
           <a className="button button-outline" href="https://www.google.com/maps/search/?api=1&query=Cesur%20Sk.%2073B%2034418%20Ka%C4%9F%C4%B1thane%20%C4%B0stanbul" target="_blank" rel="noreferrer"><MapPin size={17} /> Yol tarifi</a>
         </div>
         <div className="contact-panels">
@@ -402,24 +406,6 @@ export default function Page() {
               {hours.map((item) => <li key={item}>{item}</li>)}
             </ul>
           </article>
-          <article>
-            <h3>Güle güle kullanmanız dileğiyle</h3>
-            <p>Araca yapılan işlemler aşağıdaki bakım ve koruma adımlarıyla tamamlanır.</p>
-          </article>
-        </div>
-        <div className="process-grid">
-          <article className="process-card">
-            <h3>Dış Bakım & Boya Koruma</h3>
-            <ul>
-              {exteriorProcess.map((item) => <li key={item}>{item}</li>)}
-            </ul>
-          </article>
-          <article className="process-card">
-            <h3>Detaylı İç Kuaför</h3>
-            <ul>
-              {interiorProcess.map((item) => <li key={item}>{item}</li>)}
-            </ul>
-          </article>
         </div>
       </section>
 
@@ -427,7 +413,14 @@ export default function Page() {
         <a className="footer-brand-logo" href="#top" aria-label="ERN Car Care ana sayfa">
           <img src="/contact-logo.png" alt="ERN Car Care" />
         </a>
-        <p>© 2026 ERN Car Care · Eren Alkış</p>
+        <div className="footer-copy">
+          <strong>ERN <span>CAR CARE</span></strong>
+          <a className="footer-instagram" href="https://www.instagram.com/erncarcare/" target="_blank" rel="noreferrer">
+            <img src="/instagram-icon.png" alt="" />
+            <span>@erncarcare</span>
+          </a>
+          <small>© 2026 · Eren Alkış</small>
+        </div>
         <a href="#top" className="back-top">Başa dön ↑</a>
       </footer>
 
