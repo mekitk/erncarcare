@@ -655,11 +655,11 @@ h2 em {
 }
 
 .ppf-card-main {
-  min-height: 130px;
+  min-height: 110px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 26px;
+  padding-bottom: 16px;
   color: var(--white);
 }
 
@@ -694,9 +694,9 @@ h2 em {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: 0 12px;
-  margin: 18px 0 18px !important;
-  padding: 18px;
+  gap: 0 10px;
+  margin: 12px 0 12px !important;
+  padding: 13px 16px;
   border: 1px solid rgba(var(--ppf-accent-rgb), 0.22);
   border-radius: 8px;
   background:
@@ -712,7 +712,7 @@ h2 em {
 
 .ppf-warranty strong {
   color: var(--ppf-accent);
-  font-size: 48px;
+  font-size: 40px;
   line-height: 0.9;
   font-weight: 950;
 }
@@ -724,28 +724,65 @@ h2 em {
   text-transform: uppercase;
 }
 
-.ppf-description {
-  min-height: 66px;
+.ppf-slogan {
+  min-height: 34px;
   margin: 0;
+  color: var(--deep) !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+  font-weight: 850;
+  text-transform: uppercase;
 }
 
-.ppf-card-foot {
-  display: flex;
-  flex-wrap: wrap;
+.ppf-specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
-  margin-top: auto;
-  padding-top: 18px;
+  margin-top: 10px;
 }
 
-.ppf-card-foot span {
-  padding: 8px 10px;
-  border: 1px solid rgba(23, 33, 36, 0.08);
+.ppf-specs span {
+  display: grid;
+  place-items: center;
+  min-height: 30px;
+  border: 1px solid rgba(var(--ppf-accent-rgb), 0.18);
   border-radius: 999px;
-  background: rgba(var(--carbon-blue-gray), 0.1);
+  background: rgba(var(--ppf-accent-rgb), 0.08);
   color: var(--deep);
   font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.ppf-feature-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 8px;
+  margin: 11px 0 0;
+  padding: 0;
+}
+
+.ppf-feature-list li {
+  position: relative;
+  min-height: 18px;
+  padding-left: 12px;
+  color: rgba(23, 33, 36, 0.72);
+  font-size: 9px;
+  line-height: 1.15;
   font-weight: 800;
   text-transform: uppercase;
+}
+
+.ppf-feature-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.42em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ppf-accent);
 }
 
 .payment-promo {
@@ -840,6 +877,16 @@ h2 em {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.feature-media .image-button {
+  background: rgba(255, 255, 255, 0.62);
+  border-radius: inherit;
+}
+
+.feature-media img {
+  object-fit: cover;
+  object-position: center;
 }
 
 .feature-copy h2 {
@@ -1113,6 +1160,10 @@ h2 em {
 }
 
 .statement em {
+  color: var(--red);
+}
+
+.statement p span {
   color: var(--red);
 }
 

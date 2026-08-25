@@ -40,21 +40,30 @@ const ppfOptions = [
     series: 'CORAL SERIES',
     code: 'GX190',
     warranty: '5 Yıl Garantili',
-    description: 'Günlük kullanım için parlak, temiz ve güvenilir PPF koruması.',
+    slogan: 'Tüy kadar hafif, kaya gibi sağlam',
+    thickness: '190 Mikron',
+    finish: 'Şeffaf Parlak',
+    features: ['TPU Katman', '≥110GU Parlaklık Değeri', 'Değer Koruma', 'Kolay Uygulama', 'UV Koruma', 'Su İtici Yüzey', 'Ultra Parlak', 'Leke Tutmaz', 'Sararmaya Direnç', 'Kendini Onarma'],
   },
   {
     number: '02',
     series: 'DIAMOND SERIES',
     code: 'GX210',
     warranty: '7 Yıl Garantili',
-    description: 'Daha güçlü yüzey direnci ve uzun süreli canlı görünüm isteyen araçlar için.',
+    slogan: 'Günlük kullanıma premium çözüm',
+    thickness: '200 Mikron',
+    finish: 'Şeffaf Parlak',
+    features: ['TPU Katman', '≥110GU Parlaklık Değeri', 'Değer Koruma', 'Kolay Uygulama', 'UV Koruma', 'Su İtici Yüzey', 'Ultra Parlak', 'Leke Tutmaz', 'Sararmaya Direnç', 'Kendini Onarma'],
   },
   {
     number: '03',
     series: 'PRO',
     code: 'GX220',
     warranty: '10 Yıl Garantili',
-    description: 'Maksimum koruma, yüksek parlaklık ve uzun ömürlü premium performans.',
+    slogan: 'En zor şartlara karşı tasarlandı',
+    thickness: '220 Mikron',
+    finish: 'Şeffaf Parlak',
+    features: ['TPU Katman', '≥110GU Parlaklık Değeri', 'Değer Koruma', 'Kolay Uygulama', 'UV Koruma', 'Su İtici Yüzey', 'Ultra Parlak', 'Leke Tutmaz', 'Sararmaya Direnç', 'Kendini Onarma'],
   },
 ]
 
@@ -78,32 +87,32 @@ const catalogServices: CatalogService[] = [
     number: '01',
     title: 'PASTA CİLA & BOYA KORUMA',
     description: 'Çizik giderme, boya canlandırma ve koruyucu son kat uygulamaları.',
-    image: '/cars/mercedes-black-front.jpg',
+    image: '/cars/service-pasta-cila.jpg',
   },
   {
     number: '02',
     title: 'CAM FİLMİ (ORACAL)',
     description: 'UV koruması, mahremiyet ve aracınızın tarzına uygun cam filmi çözümleri.',
-    image: '/cars/bmw-white-sedan.jpg',
+    image: '/cars/service-cam-filmi.jpg',
     infoKey: 'cam',
   },
   {
     number: '03',
     title: 'PPF KAPLAMA',
     description: 'Taş izi, çizik ve yol şartlarına karşı 5, 7 ve 10 yıl garantili kaplama.',
-    image: '/cars/maserati-blue.jpg',
+    image: '/cars/service-ppf.jpg',
   },
   {
     number: '04',
     title: 'DETAYLI ARAÇ TEMİZLİĞİ',
     description: 'Kabin, döşeme, tavan, torpido ve tüm iç yüzeylerde detaylı hijyen.',
-    image: '/cars/mini-white-front.jpg',
+    image: '/cars/service-ic-temizlik.jpg',
   },
   {
     number: '05',
     title: 'BOYASIZ GÖÇÜK DÜZELTME',
     description: 'Boyaya zarar vermeden, aracın orijinal yüzeyini koruyan düzeltme işlemleri.',
-    image: '/cars/bmw-gray-sedan.jpg',
+    image: '/cars/service-gocuk-duzeltme.jpg',
   },
 ]
 
@@ -210,7 +219,7 @@ export default function Page() {
       <section className="protection section-pad" id="koruma">
         <div className="section-kicker">SCHUTZ 🇩🇪 PPF</div>
         <div className="intro-grid">
-          <h2>Aracınıza özel<br /><em>koruma seçenekleri.</em></h2>
+          <h2>Aracınıza özel<br /><em>koruma seçenekleri</em></h2>
           <div>
             <p className="lead">SCHUTZ PPF ürünlerinde aracınıza ve beklentinize özel üç farklı koruma seçeneği sunuyoruz.</p>
             <p>Yüksek parlaklık, güçlü koruma ve uzun ömürlü performansla aracınız ilk günkü görünümünü yıllarca korusun.</p>
@@ -238,11 +247,16 @@ export default function Page() {
                   <strong>{warrantyYears}</strong>
                   <span>Yıl Garanti</span>
                 </div>
-                <p className="ppf-description">{option.description}</p>
-                <div className="ppf-card-foot">
-                  <span>Yüksek parlaklık</span>
-                  <span>Premium koruma</span>
+                <p className="ppf-slogan">{option.slogan}</p>
+                <div className="ppf-specs">
+                  <span>{option.thickness}</span>
+                  <span>{option.finish}</span>
                 </div>
+                <ul className="ppf-feature-list" aria-label={`${option.series} teknik detayları`}>
+                  {option.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
               </article>
             )
           })}
@@ -253,7 +267,7 @@ export default function Page() {
         <div className="payment-card">
           <div className="payment-copy">
             <div className="section-kicker"><CreditCard size={16} /> KREDİ KARTINA TAKSİT</div>
-            <h2>Peşin fiyatına<br /><em>taksit fırsatı.</em></h2>
+            <h2>Peşin fiyatına<br /><em>taksit fırsatı</em></h2>
             <p>PPF kaplama, seramik kaplama, cam filmi, pasta cila ve detaylı iç kuaför hizmetlerinde kredi kartına 3, 6, 9 ve 12 taksit imkânı.</p>
           </div>
           <div className="payment-image">
@@ -265,8 +279,8 @@ export default function Page() {
       <section className="feature section-pad" id="vale">
         <div className="feature-grid">
           <div className="feature-media">
-            <button className="image-button" type="button" onClick={() => openImage('/lambo1.jpeg', 'ERN Car Care stüdyosunda teslim alınan Lamborghini')}>
-              <img src="/lambo1.jpeg" alt="ERN Car Care stüdyosunda teslim alınan Lamborghini" />
+            <button className="image-button" type="button" onClick={() => openImage('/cars/service-vale.jpg', 'ERN Car Care ücretsiz vale hizmeti')}>
+              <img src="/cars/service-vale.jpg" alt="ERN Car Care ücretsiz vale hizmeti" />
             </button>
           </div>
           <div className="feature-copy">
@@ -354,7 +368,7 @@ export default function Page() {
 
       <section className="statement">
         <div className="statement-mark"><Sparkles size={22} /></div>
-        <p>Aracınızın kusursuzluğu<br /><em>detaylarda saklı;</em><br />o detaylar ERN CAR CARE'e emanet.</p>
+        <p>Aracınızın kusursuzluğu<br /><em>detaylarda saklı;</em><br />o detaylar ERN <span>CAR CARE</span>'e emanet</p>
         <div className="statement-image">
           <button className="image-button" type="button" onClick={() => openImage('/cars/lexus-black-suv.jpg', 'ERN Car Care stüdyosunda işlem görmüş siyah Lexus')}>
             <img src="/cars/lexus-black-suv.jpg" alt="ERN Car Care stüdyosunda işlem görmüş siyah Lexus" />
@@ -367,7 +381,7 @@ export default function Page() {
           <div>
             <div className="section-kicker">ADRES</div>
             <h2 className="contact-brand-title">
-              <span>ERN <strong>CAR CARE</strong></span><br /><em>Kağıthane.</em>
+              <span>ERN <strong>CAR CARE</strong></span><br /><em>Kağıthane</em>
             </h2>
             <p>Aracınıza değer katacak tüm bakım ve koruma hizmetleri ERN Car Care'de.</p>
           </div>
@@ -419,7 +433,7 @@ export default function Page() {
             <img src="/instagram-icon.png" alt="" />
             <span>@erncarcare</span>
           </a>
-          <small>© 2026 · Eren Alkış</small>
+          <small>© 2021 · Eren Alkış</small>
         </div>
         <a href="#top" className="back-top">Başa dön ↑</a>
       </footer>

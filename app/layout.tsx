@@ -3,9 +3,13 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'ERN Car Care | Aracınıza Dair Her Şey',
-  description: 'ERN Car Care — Kağıthane’de PPF kaplama, cam filmi, pasta cila, detaylı araç temizliği, boyasız göçük düzeltme ve ücretsiz vale hizmeti.',
-  icons: { icon: '/icon-light-32x32.png', apple: '/apple-icon.png' },
+  title: 'ERN CAR CARE | Aracınıza Dair Her Şey',
+  description: 'ERN CAR CARE — Kağıthane’de PPF kaplama, cam filmi, pasta cila, detaylı araç temizliği, boyasız göçük düzeltme ve ücretsiz vale hizmeti.',
+  icons: {
+    icon: '/favicon-ern-car-care.png',
+    shortcut: '/favicon-ern-car-care.png',
+    apple: '/favicon-ern-car-care.png',
+  },
 }
 
 export const viewport: Viewport = { colorScheme: 'light', themeColor: '#f7f8f8' }
